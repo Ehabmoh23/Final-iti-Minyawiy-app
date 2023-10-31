@@ -1,44 +1,50 @@
 <section class="vh-100">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-6 text-black">
+  <div class="container mt-4 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style=" border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block" >
+              <img src="../../../assets/minia 3.jpg"
+                alt="login form" class="img-fluid" style="height:85vh;; border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-lg-5 text-black content-sign" style="height:85vh;">
+                <form>
+                    <div class="card-body p-1 p-sm-4">
+                      <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
+                      <form>
+                        <div class="form-floating mb-3">
+                          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                          <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                          <label for="floatingPassword">Password</label>
+                        </div>
 
-        <div class="px-5 ms-xl-4">
-          <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
-          <span class="h1 fw-bold mb-0">Logo</span>
+                        <div class="form-check mb-3">
+                          <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
+                          <label class="form-check-label" for="rememberPasswordCheck">
+                            Remember password
+                          </label>
+                        </div>
+                        <p class="mb-2 pb-lg-1" style="color: #3011BC !important;">Don't have an account? <a routerLink="/register" style="color: #3011BC !important;">Register here</a></p>
+                        <div class="d-grid">
+                          <button class="btn btn-primary btn-login btn-log text-uppercase fw-bold" type="submit">Sign
+                            in</button>
+                        </div>
+                        <hr class="my-1">
+                        <div class="d-grid mt-3">
+                          <img class="d-inline-block mx-auto rounded-3 mt-3" src="../../../assets/logo.png" width="100" alt="logo" />
+                        </div>
+                      </form>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-
-          <form style="width: 23rem;">
-
-            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
-
-            <div class="form-outline mb-4">
-              <input type="email" id="form2Example18" class="form-control form-control-lg" />
-              <label class="form-label" for="form2Example18">Email address</label>
-            </div>
-
-            <div class="form-outline mb-4">
-              <input type="password" id="form2Example28" class="form-control form-control-lg" />
-              <label class="form-label" for="form2Example28">Password</label>
-            </div>
-
-            <div class="pt-1 mb-4">
-              <button class="btn btn-info btn-lg btn-block w-100" type="button">Login</button>
-            </div>
-
-            <!-- <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p> -->
-            <p>Don't have an account? <a href="#!" class="link-info">Register here</a></p>
-
-          </form>
-
-        </div>
-
-      </div>
-      <div class="col-sm-6 px-0 d-none d-sm-block">
-        <img src="../../../assets/Minia/المنيا3.jpg"
-          alt="Login image" class="w-100 vh-75 mt-5 rounded-4" style="object-fit: cover; object-position: left;">
       </div>
     </div>
   </div>

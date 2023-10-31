@@ -5,6 +5,7 @@ import { RestaurentsComponent } from './restaurents/restaurents.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { CarRentalComponent } from './car-rental/car-rental.component';
 import { HomeComponent } from './home/home.component';
+import { RouterLink, RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,9 @@ import { HomeComponent } from './home/home.component';
     HomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink,
+     RouterModule
   ],
   exports:[
     HomeComponent,

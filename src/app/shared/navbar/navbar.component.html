@@ -1,36 +1,14 @@
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand ms-3" routerLink="">Seyaahaa</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Partners
-          </a>
-          <ul class="dropdown-menu text-white">
-            <a class="dropdown-item" routerLink="hotels">Hotels</a>
-            <a class="dropdown-item"routerLink="actvities">activities</a>
-            <a class="dropdown-item"routerLink="restaurents">Restauents</a>
-            <a class="dropdown-item"routerLink="car-rental">Car-Rental</a>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="login">
-            Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="register">
-            Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="profile">
-            Profile</a>
-        </li>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+  <div class="container"><a class="navbar-brand" routerLink=""><img class="d-inline-block" src="../../../assets/logo.png" width="75" alt="logo" /></a>
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto pt-2 pt-lg-0 font-base">
+        <li class="nav-item px-2"><a class="nav-link" routerLink="restaurents"> <span class="nav-link-icon text-800 me-1 fas fa-mug-saucer"></span><span class="nav-link-text">Restauents</span></a></li>
+        <li class="nav-item px-2"><a class="nav-link" routerLink="hotels"> <span class="nav-link-icon text-800 me-1 fas fa-hotel"></span><span class="nav-link-text">Hotels</span></a></li>
+        <li class="nav-item px-2"><a class="nav-link" routerLink="actvities"><span class="nav-link-icon text-800 me-1 fas fa-bolt"></span><span class="nav-link-text">Activities</span></a></li>
+        <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" routerLink="car-rental"><span class="nav-link-icon text-800 me-1 fas fa-car"></span><span class="nav-link-text">Car-Rental </span></a></li>
       </ul>
+        <a class="btn btn-voyage-outline order-0 me-2" routerLink="login"><span class="text-primary">Sign in</span></a>
     </div>
   </div>
 </nav>
