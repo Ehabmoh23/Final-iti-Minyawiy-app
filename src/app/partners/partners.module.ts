@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { RouterLink, RouterModule } from '@angular/router';
 
 
-
 @NgModule({
   declarations: [
     HotelsComponent,
@@ -20,9 +19,9 @@ import { RouterLink, RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterLink,
-     RouterModule
+    RouterModule
   ],
-  exports:[
+  exports: [
     HomeComponent,
     ActivitiesComponent,
     HotelsComponent,
@@ -30,4 +29,5 @@ import { RouterLink, RouterModule } from '@angular/router';
     CarRentalComponent
   ]
 })
-export class PartnersModule { }
+export class PartnersModule {
+}

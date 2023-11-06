@@ -1,45 +1,56 @@
-<section class="vh-100">
-  <div class="container mt-4 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+<section class="my-5">
+  <div class="container mt-4">
+    <div class="row d-flex justify-content-center align-items-center">
       <div class="col col-xl-10">
         <div class="card" style="border-radius: 1rem;">
           <div class="row g-0">
             <div class="col-md-6 col-lg-5 d-none d-md-block">
               <img src="../../../assets/minia 3.jpg"
-                alt="login form" class="img-fluid" style="height:85vh; border-radius: 1rem 0 0 1rem;" />
+                   alt="login form" class="img-fluid" style="height: 100%;
+    border-radius: 1rem 0 0 1rem;
+    object-fit: contain;
+    background: #22292f;"/>
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
-              <div class="card-body p-lg-5 text-black content-sign" style="height:85vh;">
+              <div class="card-body p-lg-5 text-black content-sign">
                 <h5 class="card-title text-center mb-1 fw-light fs-5">Sign Up</h5>
-                <form >
+                <form [formGroup]="form" (submit)="register()">
                   <div class="card-body p-1 p-sm-4">
                     <div class="form-floating mb-2">
-                      <input type="text" class="form-control" id="floatingInput" placeholder="Name" >
-                      <label for="floatingInput">Name</label>
+                      <input type="text" class="form-control" placeholder="Name" formControlName="userName">
+                      <label>User Name</label>
                     </div>
                     <div class="form-floating mb-2">
-                      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" >
-                      <label for="floatingInput">Email address</label>
+                      <input type="email" class="form-control" placeholder="name@example.com" formControlName="email">
+                      <label>Email address</label>
                     </div>
                     <div class="form-floating mb-2">
-                      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" >
+                      <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                             formControlName="password">
                       <label for="floatingPassword">Password</label>
                     </div>
                     <div class="form-floating mb-2">
-                      <input type="number" class="form-control" id="floatingPasswordRepeat" placeholder="Age" >
-                      <label for="floatingPasswordRepeat">Age</label>
+                      <input type="number" class="form-control" placeholder="Age" formControlName="age">
+                      <label>Age</label>
                     </div>
                     <div class="form-floating mb-2">
-                      <input type="tel" class="form-control" id="floatingPasswordRepeat" placeholder="Phone">
-                      <label for="floatingPasswordRepeat">Phone</label>
+                      <input type="tel" class="form-control" placeholder="Phone" formControlName="phone">
+                      <label>Phone</label>
                     </div>
                     <div class="form-floating mb-2">
-                      <input type="text" class="form-control" id="floatingPasswordRepeat" placeholder="Gender" >
-                      <label for="floatingPasswordRepeat">Gender</label>
+                      <input type="text" class="form-control" id="floatingPasswordRepeat" placeholder="Gender"
+                             formControlName="gender">
+                      <label>Gender</label>
                     </div>
-                    <p class="mb-2 pb-lg-1" style="color: #3011BC !important;">Do you have an account? <a routerLink="/login" style="color: #3011BC !important;">Sign In</a></p>
+                    <p class="mb-2 pb-lg-1" style="color: #3011BC !important;">Do you have an account? <a
+                      routerLink="/auth/login" style="color: #3011BC !important;">Sign In</a></p>
                     <div class="d-grid">
-                      <button class="btn btn-primary btn-login btn-log text-uppercase fw-bold" type="submit">Sign Up</button>
+                      <button class="btn btn-primary btn-login btn-log text-uppercase fw-bold" type="submit">Sign Up
+                      </button>
+                    </div>
+                    <div class="d-grid mt-4">
+                      <img class="d-inline-block mx-auto rounded-3" src="../../../assets/logo.png" width="150"
+                           alt="logo"/>
                     </div>
                   </div>
                 </form>
@@ -48,9 +59,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="d-grid">
-      <img class="d-inline-block mx-auto rounded-3" src="../../../assets/logo.png" width="150" alt="logo" />
     </div>
   </div>
 </section>

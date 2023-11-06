@@ -1,23 +1,46 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces/auth';
-import { Observable } from 'rxjs';
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  // private baseUrl = 'http://localhost:3000';
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
+  login(email: string, password: string) {
+    const url = 'https://trelloapp.onrender.com/login';
+    const body = {
+      email: email,
+      password: password
+    };
 
-  // constructor(private http: HttpClient) { }
+    return this.http.post(url, body);
+  }
 
-  // registerUser(userDetails: User) {
-  //   return this.http.post(`${this.baseUrl}/users`, userDetails);
-  // }
+  registerUser(userDetails: any) {
+    const url = 'https://trelloapp.onrender.com/register';
+    return this.http.post(url, userDetails);
+  }
 
-  // getUserByEmail(email: string): Observable<User[]> {
-  //   return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}`);
-  // }
+  setToken(email: string, token: string) {
+    localStorage.setItem('email', email);
+    localStorage.setItem('token', token);
+  }
+
+  get isLoggedIn(): boolean {
+    return localStorage.getItem('token') != null;
+  }
+
+  get token(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  logout() {
+    localStorage.removeItem('email');
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth/login']);
+  }
 }

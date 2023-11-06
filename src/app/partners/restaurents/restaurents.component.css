@@ -1,41 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
-    background-color: #fff;
-    font-family: 'Work Sans', sans-serif;
-    box-sizing: border-box;
-    scroll-behavior:smooth;
+
+* {
+  background-color: #fff;
+  font-family: 'Work Sans', sans-serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 .card {
-    background-color: #fff;
-    width: 21.25em;
-    box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
-    border-radius: 10px;
-    padding: 25px;
-    margin: 15px;
-    transition: 0.7s ease;
+  background-color: #fff;
+  width: 21.25em;
+  box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
+  border-radius: 10px;
+  padding: 25px;
+  margin: 15px;
+  transition: 0.7s ease;
 }
+
 .card:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-@media (max-width:641px){
-    body{
-        font-size: 12px;
-    }
+@media (max-width: 641px) {
+  body {
+    font-size: 12px;
+  }
 
-    .main-content h2{
-        font-size: 0.8em;
-    }
+  .main-content h2 {
+    font-size: 0.8em;
+  }
 
-    .main-content h3{
-        font-size: 1.4em;
-    }
+  .main-content h3 {
+    font-size: 1.4em;
+  }
 }
 
-@media (max-width:300px){
-    body{
-        font-size: 10px;
-     
-    }
+@media (max-width: 300px) {
+  body {
+    font-size: 10px;
+
+  }
 }

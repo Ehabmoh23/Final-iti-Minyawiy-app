@@ -12743,7 +12743,8 @@ fieldset:disabled .btn {
     padding: 1.8rem !important;
   }
   .p-lg-5 {
-    padding: 3rem !important;
+    /*padding: 3rem !important;*/
+    padding: 5rem !important;
   }
   .p-lg-6 {
     padding: 4rem !important;

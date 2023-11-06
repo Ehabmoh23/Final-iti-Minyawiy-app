@@ -7,7 +7,8 @@ import { RouterLink, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [FooterComponent, NavbarComponent, NotfoundComponent],
-  imports: [CommonModule, RouterLink, RouterModule ],
+  imports: [CommonModule, RouterLink, RouterModule],
   exports: [FooterComponent, NavbarComponent, NotfoundComponent],
 })
-export class SharedModule {}
+export class SharedModule {
+}

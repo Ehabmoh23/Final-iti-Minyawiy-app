@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { ToastModule } from 'primeng/toast';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthRoutingModule } from "src/app/auth/auth-routing.module";
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -18,22 +18,17 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent
   ],
   imports: [
-  CommonModule,
-    RouterLink,
-    RouterModule,
+    CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
     CardModule,
     InputTextModule,
     ButtonModule,
     HttpClientModule,
-    ToastModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
+    AuthRoutingModule
   ],
-  exports:[
-    RegisterComponent,
-    LoginComponent,
-    ProfileComponent,
-  ]
+  exports: []
 })
-export class AuthModule { }
+export class AuthModule {
+}

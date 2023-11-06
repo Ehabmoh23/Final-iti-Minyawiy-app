@@ -6,25 +6,20 @@ import { RestaurentsComponent } from './partners/restaurents/restaurents.compone
 import { CarRentalComponent } from './partners/car-rental/car-rental.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { ActivitiesComponent } from './partners/activities/activities.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { ProfileComponent } from './auth/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', component:  HomeComponent },
-  { path: 'hotels', component: HotelsComponent  },
-  { path: 'restaurents', component: RestaurentsComponent  },
-  { path: 'car-rental', component: CarRentalComponent  },
-  { path: 'actvities', component: ActivitiesComponent  },
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'profile', component: ProfileComponent},
-  { path: '**', component: NotfoundComponent  },
-
+  {path: '', component: HomeComponent},
+  {path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
+  {path: 'hotels', component: HotelsComponent},
+  {path: 'restaurents', component: RestaurentsComponent},
+  {path: 'car-rental', component: CarRentalComponent},
+  {path: 'actvities', component: ActivitiesComponent},
+  {path: '**', component: NotfoundComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
