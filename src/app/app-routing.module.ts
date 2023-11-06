@@ -16,9 +16,9 @@ const routes: Routes = [
   { path: 'restaurents', component: RestaurentsComponent  },
   { path: 'car-rental', component: CarRentalComponent  },
   { path: 'actvities', component: ActivitiesComponent  },
-  { path: 'login', component: LoginComponent  },
-  { path: 'register', component: RegisterComponent  },
-  { path: 'profile', component: ProfileComponent  },
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'profile', component: ProfileComponent},
   { path: '**', component: NotfoundComponent  },
 
 ];
