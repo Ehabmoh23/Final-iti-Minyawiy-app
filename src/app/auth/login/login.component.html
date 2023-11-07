@@ -1,5 +1,98 @@
-<section class="my-5">
-  <div class="container mt-4">
+<section class="px-3 p-md-4 p-xl-5 ">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
+        <div class="card border-1 shadow-lg rounded-4">
+          <div class="card-body p-1 p-md-4 p-xl-5">
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-5">
+                  <h2>Sign in</h2>
+                </div>
+              </div>
+            </div>
+            <form [formGroup]="form" (submit)="loginUser()">
+              <div class="row gy-3 overflow-hidden">
+                <div class="col-12" *ngIf="apiError" class="alert alert-danger">
+                  {{ apiError }}
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" formControlName="email" required>
+                    <label for="email" class="form-label" >Email</label>
+                    <div class="mt-1" *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched" class="alert alert-danger">
+                      Email is required
+                    </div>
+                    <div class="mt-1" *ngIf="form.get('email')?.hasError('pattern') && form.get('email')?.touched" class="alert alert-danger">
+                      Email is not valid
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" formControlName="password" required>
+                    <label for="password" class="form-label">Password</label>
+                    <div class="mt-1" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched" class="alert alert-danger">
+                      Password is required
+                    </div>
+                    <div class="mt-1" *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched" class="alert alert-danger">
+                      Password is not valid
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
+                    <label class="form-check-label text-secondary" for="remember_me">
+                      Keep me logged in
+                    </label>
+                  </div>
+                </div> -->
+                <div class="col-12">
+                  <div class="d-grid">
+                    <button class="btn btn-primary text-uppercase fw-bold" type="submit">Sign
+                      in
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="row">
+              <div class="col-12">
+                <hr class="mt-5 mb-4 border-secondary-subtle">
+                <div class="d-flex gap-2 gap-md-4 flex-md-row justify-content-md-center">
+                  <p class="mb-2 pb-lg-1" style="color: #3011BC !important;">Don't have an account? <a
+                    routerLink="/auth/register" style="color: #3011BC !important;">Register here</a></p>
+                  <!-- <a href="#!"  style="color: #3011BC !important;">Forgot password</a> -->
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-grid ">
+                  <img class="d-inline-block mx-auto rounded-2" src="../../../assets/menyawie.png" width="100"
+                       alt="logo"/>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-12">
+                <p class="mt-5 mb-4">Or continue with</p>
+                <div class="d-flex g-2 flex-column">
+                  <a href="#!" class="btn btn-danger">
+                    <i></i>
+                    <span class="ms-1 text-uppercase">Sign in With Google</span>
+                  </a>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- <div class="container mt-4" >
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col col-xl-10">
         <div class="card" style=" border-radius: 1rem;">
@@ -41,7 +134,7 @@
                     </div>
                     <hr class="my-1">
                     <div class="d-grid mt-4">
-                      <img class="d-inline-block mx-auto rounded-3 mt-3" src="../../../assets/logo.png" width="100"
+                      <img class="d-inline-block mx-auto rounded-3 mt-3" src="../../../assets/menyawie.png" width="100"
                            alt="logo"/>
                     </div>
                   </div>
@@ -52,52 +145,4 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-  <div header="Login" [style]="{ width: '360px' }">
-    <div class="field">
-      <label for="email">Email</label>
-      <input
-        type="text"
-        pInputText
-        formControlName="email"
-        class="w-full"
-        name="email"
-        placeholder="Type your email"
-      />
-      <small
-        *ngIf="email.invalid && (email.dirty || email.touched)"
-        class="block p-error"
-      >
-        <div *ngIf="email.errors?.['required']">Email is required.</div>
-        <div *ngIf="email.errors?.['email']">Email should be valid</div>
-      </small>
-    </div>
-    <div class="field">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        pInputText
-        formControlName="password"
-        class="w-full"
-        name="password"
-        placeholder="Type your password"
-      />
-      <small
-        *ngIf="password.invalid && (password.dirty || password.touched)"
-        class="block p-error"
-      >
-        <div *ngIf="password.errors?.['required']">Password is required.</div>
-      </small>
-    </div>
-    <button
-      label="SIGN IN"
-      styleClass="w-full"
-      [disabled]="loginForm.invalid"
-      type="submit"
-    ></button>
-    <div class="mt-2">Not a member? <a routerLink="/register">Register</a></div>
-  </div>
-</form> -->
+  </div> -->

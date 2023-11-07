@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-
+import "./login.component"
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
+  apiError: string = '';
   form: FormGroup;
 
   constructor(
@@ -26,14 +26,31 @@ export class LoginComponent {
   }
 
   loginUser() {
+    if (this.form.invalid) {
+      // Display validation error alerts
+      this.form.markAllAsTouched();
+      return;
+    }
 
-    const {email, password} = this.form.getRawValue();
+    const { email, password } = this.form.getRawValue();
 
-    this.authService.login(email, password)
-      .subscribe((res: any) => {
+    this.authService.login(email, password).subscribe(
+      (res: any) => {
         this.authService.setToken(email, res.token);
-        console.log('res => ', res)
+        console.log('res => ', res);
         this.router.navigate(['/']);
-      });
+      },
+      (error) => {
+        this.apiError = error.error.message;
+      }
+    );
+    // const {email, password} = this.form.getRawValue();
+
+    // this.authService.login(email, password)
+    //   .subscribe((res: any) => {
+    //     this.authService.setToken(email, res.token);
+    //     console.log('res => ', res)
+    //     this.router.navigate(['/']);
+    //   });
   }
 }

@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
 import { Router } from "@angular/router";
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
+  apiError: string = '';
   form: FormGroup;
 
   constructor(
@@ -29,10 +28,18 @@ export class RegisterComponent {
   register() {
     const body = this.form.getRawValue();
 
-    this.authService.registerUser(body)
-      .subscribe((res: any) => {
-        console.log('register res => ', res)
+    this.authService.registerUser(body).subscribe(
+      (res: any) => {
+        console.log('register res => ', res);
         this.router.navigate(['/auth/login']);
-      });
+      },
+      (error: any) => {
+        if (error.error && error.error.message) {
+          this.apiError = error.error.message;
+        } else {
+          this.apiError = 'An error occurred while registering.';
+        }
+      }
+    );
   }
-}
+  }
