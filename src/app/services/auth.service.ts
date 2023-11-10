@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string) {
-    const url = 'https://trelloapp.onrender.com/login';
+    const url = 'https://iti-final.vercel.app/user/login';
     const body = {
       email: email,
       password: password,
@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   registerUser(userDetails: any) {
-    const url = 'https://trelloapp.onrender.com/register';
+    const url = 'https://iti-final.vercel.app/user/register';
     return this.http.post(url, userDetails).pipe(
       tap((response: any) => {
         if (response && response.userDetails) {

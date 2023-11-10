@@ -6,6 +6,7 @@ import { RestaurentsComponent } from './partners/restaurents/restaurents.compone
 import { CarRentalComponent } from './partners/car-rental/car-rental.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { ActivitiesComponent } from './partners/activities/activities.component';
+import { EventsComponent } from './partners/events/events.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'restaurents', component: RestaurentsComponent},
   {path: 'car-rental', component: CarRentalComponent},
   {path: 'actvities', component: ActivitiesComponent},
+  {path: 'events', component: EventsComponent},
   {path: '**', component: NotfoundComponent},
 ];
 

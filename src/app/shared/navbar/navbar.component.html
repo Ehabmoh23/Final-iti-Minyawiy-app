@@ -1,37 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-light  py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
-  <div class="container"><a class="navbar-brand" routerLink=""><img class="d-inline-block"
-                                                                    src="../../../assets/menyawie.png" width="75"
-                                                                    alt="logo"/></a>
-    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+<nav class="navbar navbar-expand-lg navbar-light py-1 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+  <div class="container"><a class="navbar-brand" routerLink=""><img class="d-inline-block" src="../../../assets/Minyiawiy.png" width="75" alt="logo" /></a>
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
       <ul class="navbar-nav mx-auto pt-2 pt-lg-0 font-base">
-        <li class="nav-item px-2"><a class="nav-link" routerLink="restaurents"> <span
-          class="nav-link-icon text-800 me-1 fas fa-mug-saucer"></span><span class="nav-link-text">Restauents</span></a>
-        </li>
-        <li class="nav-item px-2"><a class="nav-link" routerLink="hotels"> <span
-          class="nav-link-icon text-800 me-1 fas fa-hotel"></span><span class="nav-link-text">Hotels</span></a></li>
-        <li class="nav-item px-2"><a class="nav-link" routerLink="actvities"><span
-          class="nav-link-icon text-800 me-1 fas fa-bolt"></span><span class="nav-link-text">Activities</span></a></li>
-        <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" routerLink="car-rental"><span
-          class="nav-link-icon text-800 me-1 fas fa-car"></span><span class="nav-link-text">Car-Rental </span></a></li>
+        <li class="nav-item px-2"><a class="nav-link" routerLink="restaurents"> <span class="nav-link-icon text-800 me-1 fas fa-mug-saucer"></span><span class="nav-link-text">Restaurants</span></a></li>
+        <li class="nav-item px-2"><a class="nav-link" routerLink="hotels"> <span class="nav-link-icon text-800 me-1 fas fa-hotel"></span><span class="nav-link-text">Hotels</span></a></li>
+        <li class="nav-item px-2"><a class="nav-link" routerLink="actvities"><span class="nav-link-icon text-800 me-1 fas fa-bolt"></span><span class="nav-link-text">Activities</span></a></li>
+        <li class="nav-item px-2"><a class="nav-link" routerLink="events"> <span class="nav-link-icon text-800 me-1 fas fa-hotel"></span><span class="nav-link-text">Events</span></a></li>
+        <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" routerLink="car-rental"><span class="nav-link-icon text-800 me-1 fas fa-car"></span><span class="nav-link-text">Car-Rental </span></a></li>
       </ul>
-      <a
+        <!-- <a class="btn btn-voyage-outline order-0 me-2" routerLink="login">Sign in</a> -->
+        <a
         *ngIf="!authService.isLoggedIn"
-        class="btn btn-voyage-outline order-0 me-2"
+        class="btn btn-voyage-outline  me-2"
         routerLink="/auth/login">
         <span class="text-primary">Sign in</span>
       </a>
       <a
         *ngIf="authService.isLoggedIn"
-        class="btn btn-voyage-outline order-0 me-2"
+        class="btn btn-voyage-outline  me-2"
         (click)="authService.logout()">
         <span class="text-primary">Logout</span>
       </a>
       <a
         *ngIf="authService.isLoggedIn"
-        class="btn btn-voyage-outline order-0 me-2"
+        class="btn btn-voyage-outline  me-2"
         routerLink="/auth/profile">
         <span class="text-primary">Profile</span>
       </a>

@@ -1,7 +1,7 @@
 
 .menu-list-row .blog-box {
-  max-width: 400px; 
-  margin: 0 auto; 
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .menu-list-row .blog-box .blog-img {
@@ -18,7 +18,7 @@
   max-height: 100px;
 }
 .menu-list-row .dish-rating {
-  color: #FFD700; 
+  color: #FFD700;
 }
 
 .menu-list-row .dish-title h3 {
@@ -27,7 +27,7 @@
 }
 
 .menu-list-row .dish-title p {
-  /* 
+  /*
   margin-top: -25px; */
   text-align: center;
   height: 50%; /* Make all paragraphs within card-body fill the available height */
@@ -37,13 +37,13 @@
 }
 
 .menu-list-row .btn-orange {
-  background-color: #FFA500; 
-  color: #fff; 
+  background-color: #FFA500;
+  color: #fff;
   border: none;
 }
 
 .menu-list-row .btn-orange:hover {
-  background-color: #FF8C00; 
+  background-color: #FF8C00;
 }
 .clr-root{
   color: #ff8243;

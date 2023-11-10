@@ -6,6 +6,8 @@ import { ActivitiesComponent } from './activities/activities.component';
 import { CarRentalComponent } from './car-rental/car-rental.component';
 import { HomeComponent } from './home/home.component';
 import { RouterLink, RouterModule } from '@angular/router';
+import { AuthModule } from '../auth/auth.module';
+import { EventsComponent } from './events/events.component';
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import { RouterLink, RouterModule } from '@angular/router';
     RestaurentsComponent,
     ActivitiesComponent,
     CarRentalComponent,
-    HomeComponent
+    HomeComponent,
+    EventsComponent
   ],
   imports: [
     CommonModule,
     RouterLink,
-    RouterModule
+    RouterModule,
+    AuthModule
   ],
   exports: [
     HomeComponent,

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { PartnersModule } from './partners/partners.module';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
