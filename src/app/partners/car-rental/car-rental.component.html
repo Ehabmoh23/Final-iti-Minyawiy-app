@@ -1,72 +1,47 @@
 <section class="menu-list-row mt-5">
-    <div class="container">
-      <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-lg-4">
-          <div class="blog-box">
-              <img class="blog-img back-img"
-                  src="../../../assets/activites/دير.jpg">
-                  <div class="card-body text-center">
-                    <div class="dish-rating mt-3">
-                        5
-                        <i class="fas fa-star"></i>
-                      </div>
-                      
-                    <div class="dish-title mt-3">
-                      <h3 class="h3-title">El-Minya Automative</h3>
-                      <p>Your safety is with us. Rent your car safely with the most comfortable payment methods.</p>
-                    </div>
-                    <div class="dish-info"></div>
-                    <a class="d-block" href="https://maps.app.goo.gl/U4JbnFgetJ73MBt19" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a>
-                    <a href="#" class="btn btn-orange btn-lg mt-2">See More</a>
-                  </div>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-12 text-center" *ngIf="cars.length === 0">
+        <i class="fas fa-spinner fa-spin fa-3x"></i>
+        <h1 class="mt-3">Loading....</h1>
+         </div>
+      <div *ngFor="let car of cars" class="col-lg-4">
+        <div class="blog-box">
+          <img class="blog-img back-img" src="../../../assets/img.jpg">
+          <div class="card-body text-center">
+            <div class="dish-title mt-3">
+              <h3 class="h3-title">{{ car.carName }}</h3>
+              <p>{{ car.address }}</p>
+              <p>{{ car.phone }}</p>
+            </div>
+            <div class="dish-info"></div>
+            <a href="#" class="btn btn-orange btn-lg">See More</a>
           </div>
-      </div>
-        <!-- Card 2 -->
-        <div class="col-lg-4">
-          <div class="blog-box">
-              <img class="blog-img back-img"
-              src="../../../assets/hotels/بالاس.jpeg">
-              <div class="card-body text-center">
-                    <div class="dish-rating mt-3">
-                        5
-                        <i class="fas fa-star"></i>
-                      </div>
-                      
-                    <div class="dish-title mt-3">
-                      <h3 class="h3-title">Ahmed cars</h3>
-                      <p> Our customers are our capital, so do not feel when dealing with
-                        us that you are a tenant, but always an owner.</p>
-                    </div>
-                    <div class="dish-info"></div>
-                    <a class="d-block" href="https://maps.app.goo.gl/u19tUBjyiRYsvBzB6" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a>
-                    <a href="#" class="btn btn-orange btn-lg mt-2">See More</a>
-                    </div>
-          </div>
-      </div>
-        <!-- Card 3 -->
-        <div class="col-lg-4">
-          <div class="blog-box">
-              <img class="blog-img back-img"
-                  src="../../../assets/hotels/سافوي.jpeg">
-                  <div class="card-body text-center">
-                    <div class="dish-rating mt-3">
-                        5
-                        <i class="fas fa-star"></i>
-                      </div>
-                      
-                    <div class="dish-title mt-3">
-                      <h3 class="h3-title">Minya Motors</h3>
-                      <p>If you want happiness and enjoyment in moving, you should book
-                        with us at the cheapest prices.</p>
-                    </div>
-                    <div class="dish-info"></div>
-                    <a class="d-block" href="https://maps.app.goo.gl/FMaiZdDbswrKuo957" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a>
-                    <a href="#" class="btn btn-orange btn-lg mt-2">See More</a>
-                  </div>
-          </div>
-      </div>
+        </div>
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>
+
+
+
+  <!-- <div class="col-lg-4">
+    <div class="blog-box">
+        <img class="blog-img back-img"
+            src="../../../assets/activites/دير.jpg">
+            <div class="card-body text-center">
+              <div class="dish-rating mt-3">
+                  5
+                  <i class="fas fa-star"></i>
+                </div>
+
+              <div class="dish-title mt-3">
+                <h3 class="h3-title">El-Minya Automative</h3>
+                <p>Your safety is with us. Rent your car safely with the most comfortable payment methods.</p>
+              </div>
+              <div class="dish-info"></div>
+              <a class="d-block" href="https://maps.app.goo.gl/U4JbnFgetJ73MBt19" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a>
+              <a href="#" class="btn btn-orange btn-lg mt-2">See More</a>
+            </div>
+    </div>
+</div> -->

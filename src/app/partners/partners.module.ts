@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { AuthModule } from '../auth/auth.module';
 import { EventsComponent } from './events/events.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardDetailsComponent } from './card-details/card-details.component';
 
 
 @NgModule({
@@ -17,20 +19,24 @@ import { EventsComponent } from './events/events.component';
     ActivitiesComponent,
     CarRentalComponent,
     HomeComponent,
-    EventsComponent
+    EventsComponent,
+    CardDetailsComponent,
   ],
   imports: [
     CommonModule,
     RouterLink,
     RouterModule,
-    AuthModule
+    AuthModule,
+    BrowserAnimationsModule
   ],
   exports: [
     HomeComponent,
     ActivitiesComponent,
     HotelsComponent,
     RestaurentsComponent,
-    CarRentalComponent
+    CarRentalComponent,
+    EventsComponent,
+    CardDetailsComponent
   ]
 })
 export class PartnersModule {

@@ -17575,7 +17575,7 @@ ul {
         display: flex;
         align-items: center;
     }
-    
+
     .header-btn.header-cart {
         display: none;
     }
@@ -17796,8 +17796,9 @@ p {
 }
 
 .brands-box:hover {
-    filter: brightness(0.3);
+    filter: brightness(0.7);
     opacity: 0.9;
+    -webkit-filter: brightness(0.7);
 }
 
 .brand-title .h5-title {
@@ -17989,7 +17990,7 @@ p {
 .btn-orange {
     background-color: orange;
     border-color: orange;
-    color: white; 
+    color: white;
   }
 .dish-add-btn i {
     color: #ffffff;
@@ -18168,13 +18169,13 @@ p {
   width: 100%; /* Set a fixed width */
   height: 150px; /* Set a fixed height */
   object-fit: cover; /* Maintain image aspect ratio and cover the container */
-  border-radius: 30px; 
+  border-radius: 30px;
 }
 
 .blog-box {
     padding: 30px 15px;
     border-radius: 30px;
-    background: linear-gradient(145deg, #ececec, #fdfdfd);
+    background: linear-gradient(190deg, #f0efef, #FFFEFE);
     box-shadow: 30px 30px 50px #dcdcdc, -30px -30px 50px #ffffff;
     transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
     /* margin-bottom: 30px; */

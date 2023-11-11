@@ -1,51 +1,35 @@
-<section class="vh-100" style="background-color: #f4f5f7;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-lg-8 mb-4 mb-lg-0">
-        <div class="card mb-3" style="border-radius: .5rem;">
-          <div class="row g-0">
-            <div class="col-md-4 gradient-custom text-center text-white"
-              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-              <img src="../../../assets/profile.jpg"
-                alt="Avatar" class="img-fluid my-5 rounded-circle" style="width: 80px;" />
-              <h5 class="text-white">ehab mohamed</h5>
-              <i class="far fa-edit mb-5"></i>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body p-4">
-                <h6>Information</h6>
-                <hr class="mt-0 mb-4">
-                <div class="row pt-1">
-                  <div class="col-6 mb-3">
-                    <h6>Email</h6>
-                    <p class="text-muted">ehab12@gmail.com</p>
-                  </div>
-                  <div class="col-6 mb-3">
-                    <h6>Phone</h6>
-                    <p class="text-muted">01018168871</p>
-                  </div>
-                </div>
-                <hr class="mt-0 mb-4">
-                <div class="row pt-1">
-                  <div class="col-6 mb-3">
-                    <h6>Gender</h6>
-                    <p class="text-muted">male</p>
-                  </div>
-                  <div class="col-6 mb-3">
-                    <h6>Age</h6>
-                    <p class="text-muted">27</p>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-start">
-                  <a><i class="fab fa-facebook-f fa-lg me-3 text-primary"></i></a>
-                  <a ><i class="fab fa-twitter fa-lg me-3 text-primary"></i></a>
-                  <a ><i class="fab fa-instagram fa-lg text-primary"></i></a>
-                </div>
-              </div>
-            </div>
+<section style="background-color: #f4f5f7;">
+  <div class="container my-5">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+          <img src="{{userData?.profileImage ? userData?.profileImage : '../../../assets/profile.jpg'}}"
+          alt="Avatar" class="img-fluid my-4 rounded-circle" style="width: 200px;height: 200px;border-radius: 30px; margin-top: -50px;" />
+          <div class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-secondary me-2" (click)="openFileInput()">Upload Image</button>
+            <button class="btn btn-success" (click)="updateProfile()">Update Profile</button>
           </div>
         </div>
       </div>
-    </div>
+        <div class="col-lg-5">
+          <div class="bg-secondary rounded d-flex justify-content-center align-items-center" style="width: 400px; height: 70px;">
+            <h3 class="h2 text-white" style="text-align: center;">Mohab ashraf ahmed</h3><br>
+        </div>
+        <ul class="list-unstyled mb-1-9 ms-3s" style="margin-top: 25px;">
+            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Age:</span> 25 Years</li>
+            <li class="mb-2 mb-xl-3 display-28" style="width: 400px;"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span> mohabashraf63@gmail.com </li>
+            <li class="mb-2 mb-xl-3 display-28"  style="width: 400px;"><span class="display-26 text-secondary me-2 font-weight-600">address:</span> Minya,Egypt</li>
+            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span> 01018812803</li>
+            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">gender:</span> male</li>
+
+        </ul>
+        <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+            <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
+            <li><a href="#!"><i class="ti-facebook"></i></a></li>
+            <li><a href="#!"><i class="ti-pinterest"></i></a></li>
+            <li><a href="#!"><i class="ti-instagram"></i></a></li>
+        </ul>
+        </div>
+      </div>
   </div>
 </section>

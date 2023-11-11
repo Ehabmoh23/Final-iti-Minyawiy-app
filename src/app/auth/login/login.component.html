@@ -1,4 +1,4 @@
-<section class="px-3 p-md-4 p-xl-5 ">
+<section class="px-3 p-md-4 p-xl-5 container ">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-12">
                   <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" formControlName="password" required>
+                    <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" formControlName="password" required autocomplete="current password">
                     <label for="password" class="form-label">Password</label>
                     <div class="mt-1" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched" class="alert alert-danger">
                       Password is required

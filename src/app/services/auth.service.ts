@@ -2,11 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt'; // Import JwtHelperService
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private jwtHelper: JwtHelperService = new JwtHelperService();
+
   constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string) {
@@ -46,6 +49,22 @@ export class AuthService {
 
   get token(): string | null {
     return localStorage.getItem('token');
+  }
+
+  getUserInfoFromToken(): any {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decodedToken = this.jwtHelper.decodeToken(token);
+        // Exclude password and cPassword from the returned user information
+        const { password, cPassword, ...userInfo } = decodedToken;
+        return userInfo;
+      } catch (error) {
+        console.error('Error decoding token:', error);
+        return null;
+      }
+    }
+    return null;
   }
 
   logout() {
