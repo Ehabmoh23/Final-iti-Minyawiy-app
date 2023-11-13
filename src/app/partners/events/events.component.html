@@ -2,7 +2,6 @@
   `
   <div class="container">
     <div class="row g-4">
-      <div class="row g-4">
         <div class="col-12 text-center" *ngIf="loading">
           <i class="fas fa-spinner fa-spin fa-3x"></i>
           <h1 class="mt-3">Loading....</h1>
@@ -21,74 +20,11 @@
                 <p class="lead-75">Phone :{{ event.phone }}</p>
               </div>
               <div class="dish-info"></div>
-              <a [routerLink]="['/cardDetails','getevents', event._id]" class="btn btn-orange btn-lg">See Details</a>
-
+              <a [routerLink]="['/cardDetails','getEvent', event._id]" class="btn btn-secondary btn-lg">See Details</a>
+              <button class=" ms-2 btn btn-outline-primary btn-lg" (click)="star(event._id)">Favourite</button>
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </section>
-
-<!-- <div class="col-lg-4">
-  <div class="blog-box">
-      <img class="blog-img back-img"
-          src="../../../assets/hotels/جراند اتون.jpeg">
-          <div class="card-body text-center">
-            <div class="dish-rating mt-3">
-                5
-                <i class="fas fa-star"></i>
-              </div>
-
-            <div class="dish-title mt-3">
-              <h3 class="h3-title">Grand Aton Hotel</h3>
-              <p>Some quick example text to build on the card title and make up the bulk of
-                the card's content</p>
-            </div>
-            <div class="dish-info"></div>
-            <a href="#" class="btn btn-orange btn-lg ">See More</a>
-          </div>
-  </div>
-</div>
-
-<div class="col-lg-4">
-  <div class="blog-box">
-      <img class="blog-img back-img"
-      src="../../../assets/hotels/بالاس.jpeg">
-      <div class="card-body text-center">
-            <div class="dish-rating mt-3">
-                5
-                <i class="fas fa-star"></i>
-              </div>
-
-            <div class="dish-title mt-3">
-              <h3 class="h3-title">Palace Hotel</h3>
-              <p>Some quick example text to build on the card title and make up the bulk of
-                the card's content</p>
-            </div>
-            <div class="dish-info"></div>
-            <a href="#" class="btn btn-orange btn-lg ">See More</a>
-          </div>
-  </div>
-</div>
-<div class="col-lg-4">
-  <div class="blog-box">
-      <img class="blog-img back-img"
-          src="../../../assets/hotels/سافوي.jpeg">
-          <div class="card-body text-center">
-            <div class="dish-rating mt-3">
-                5
-                <i class="fas fa-star"></i>
-              </div>
-
-            <div class="dish-title mt-3">
-              <h3 class="h3-title">Savoy Hotel</h3>
-              <p>Some quick example text to build on the card title and make up the bulk of
-                the card's content</p>
-            </div>
-            <div class="dish-info"></div>
-            <a href="#" class="btn btn-orange btn-lg ">See More</a>
-          </div>
-  </div>
-</div> -->

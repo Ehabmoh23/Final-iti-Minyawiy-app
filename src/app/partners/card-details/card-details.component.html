@@ -1,37 +1,57 @@
 <section>
   <div class="container">
-		<div class="card">
-			<div class="container">
-				<div class="wrapper row">
-					<div class="preview col-md-7">
-						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" >
-               <img
-                [src]="apiData.image"
-                class="img-fluid w-75 border rounded-3" style=" max-height: 400px; "
-                (error)="errorHandler($event)"
-                alt="no image"
-              />
+    <div class="card">
+      <div class="container">
+        <div class="wrapper row">
+          <div class="col-12 text-center" *ngIf="loading">
+            <i class="fas fa-spinner fa-spin fa-3x"></i>
+            <h1 class="mt-3">Loading....</h1>
+          </div>
+          <div class="preview col-md-7" *ngIf="!loading">
+            <div class="preview-pic tab-content">
+              <div class="tab-pane active">
+                <img
+                  [src]="apiData?.image"
+                  class="img-fluid w-100 border rounded-3"
+                  style="max-height: 500px;"
+                  (error)="errorHandler($event)"
+                  alt="no image"
+                />
+              </div>
             </div>
-						</div>
-					</div>
-					<div class="details col-md-4 mt-5">
-						<h3 class="product-title"> {{
-              apiData.hotelName ||
-              apiData.carName ||
-              apiData.resturantName ||
-              apiData.eventName ||
-              apiData.visitName
-          }}
-          </h3>
-						<p class="product-description">Email : {{ apiData?.email }}</p>
-						<p class="product-description">Address : {{ apiData?.address }}</p>
-						<p *ngIf="apiData.location" class="product-description">location : {{ apiData?.location }}</p>
-						<p *ngIf="apiData.phone" class="product-description">Phone : {{ apiData?.phone }}</p>
-						<p *ngIf="apiData.price" class="product-description">Price : {{ apiData?.price }}</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+          </div>
+          <div class=" details col-md-5" *ngIf="!loading">
+            <h3 class="product-title fw-bolder">
+              {{
+                apiData?.hotelName ||
+                  apiData?.carName ||
+                  apiData?.restName ||
+                  apiData?.eventName ||
+                  apiData?.visitName
+              }}
+            </h3>
+            <p class="product-description">Email : {{ apiData?.email }}</p>
+            <p class="product-description">Address : {{ apiData?.address }}</p>
+            <!-- <p *ngIf="apiData?.location" class="product-description">
+              location : {{ apiData?.location }}
+            </p> -->
+            <p *ngIf="apiData?.phone" class="product-description">
+              Phone : {{ apiData?.phone }}
+            </p>
+            <p *ngIf="apiData?.price" class="product-description">
+              Price : {{ apiData?.price }}
+            </p>
+            <iframe class="ms-2"
+                width="400"
+                height="250"
+                frameborder="0"
+                style="border: 0"
+                [src]="sanitizedLocation"
+               allowfullscreen
+              ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

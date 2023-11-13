@@ -13,14 +13,15 @@
             <img class="blog-img back-img" [src]="restauernt.image" (error)="errorHandler($event)" />
             <div class="card-body text-center">
               <div class="dish-title mt-3">
-                <h3 class="h3-title">Name{{ restauernt.restaurentName }}</h3>
+                <h3 class="h3-title">{{ restauernt.restName }}</h3>
                 <p class="lead-75">email :{{ restauernt.email }}</p>
                 <p class="lead-75">Address : {{ restauernt.address }}</p>
                 <p class="lead-75">Phone :{{ restauernt.phone }}</p>
               </div>
               <div class="dish-info"></div>
-                 <a [routerLink]="['/cardDetails','getrestauernt', restauernt._id]" class="btn btn-orange btn-lg">See Details</a>
-            </div>
+                 <a [routerLink]="['/cardDetails','getresturant', restauernt._id]" class="btn btn-secondary btn-lg">See Details</a>
+                 <button class=" ms-2 btn btn-outline-primary btn-lg" (click)="star(restauernt._id)">Favourite</button>
+                </div>
           </div>
         </div>
     </div>

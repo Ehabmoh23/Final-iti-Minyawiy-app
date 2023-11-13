@@ -32,9 +32,9 @@ errorHandler(event: any) {
   event.target.src = "../../../assets/img.jpg";
 }
 star(id: string) {
-  this.categoryService.star(id).subscribe((res) => {
-    console.log('star res ', res);
-    this.router.navigate(['/']);
-  });
+    this.categoryService.star(id, "visit-place").subscribe((res) => {
+      console.log('star res ', res);
+    });
+    console.error('Token not found in local storage');
 }
 }

@@ -20,8 +20,8 @@
           <p class="lead-75">Price :{{ activite.price }}</p>
         </div>
         <div class="dish-info"></div>
-        <a [routerLink]="['/cardDetails','getvisitplace', activite._id]" class="btn btn-orange btn-lg">See Details</a>
-        <!-- <button class="btn btn-sm" (click)="star(activite._id)">Star</button> -->
+        <a [routerLink]="['/cardDetails','getvisitplace', activite._id]" class="btn btn-secondary btn-lg">See Details</a>
+        <button class=" ms-2 btn btn-outline-primary btn-lg" (click)="star(activite._id)">Favourite</button>
       </div>
     </div>
   </div>

@@ -1,0 +1,31 @@
+<h3 class="ms-4 my-4">{{title}}</h3>
+
+<div class="row">
+  <div class="col-12 text-center" *ngIf="filtered?.length == 0">
+    <!-- <img src="../../../assets/nodata.png" class="w-50 rounded-circle" alt=""> -->
+    <h3>No Data List</h3>
+  </div>
+  <div *ngFor="let item of filtered" class="col-lg-4">
+    <div class="blog-box">
+      <img class="blog-img back-img" [src]="item.image" (error)="errorHandler($event)">
+      <div class="card-body text-center">
+        <div class="dish-title my-3">
+          <h3 class="h3-title">
+            {{
+              item?.hotelName ||
+              item?.carName ||
+                item?.restName ||
+                item?.eventName ||
+                item?.visitName
+            }}
+          </h3>
+          <p class="lead-75">email :{{ item.email }}</p>
+          <p class="lead-75">Address : {{ item.address }}</p>
+          <p class="lead-75">Phone :{{ item.phone }}</p>
+        </div>
+        <div class="dish-info"></div>
+        <a [routerLink]="['/cardDetails',type, item._id]" class="btn btn-secondary btn-lg">See Details</a>
+      </div>
+    </div>
+  </div>
+</div>

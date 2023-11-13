@@ -28,9 +28,13 @@ export class HotelsComponent {
   }
 
   star(id: string) {
-    this.categoryService.star(id).subscribe((res) => {
-      console.log('star res ', res);
-      this.router.navigate(['/']);
-    });
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.categoryService.star(id, "hotel").subscribe((res) => {
+        console.log('star res ', res);
+      });
+    } else {
+      console.error('Token not found in local storage');
+    }
   }
 }

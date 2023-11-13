@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import './profile.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CategoryService } from 'src/app/services/category.service';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -9,14 +11,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileComponent {
   userData: any;
-  imageFile: File | null = null; // Variable to store the selected image file
+  imageFile: File | null = null;
   form: FormGroup;
   restForm: FormGroup;
   apiError: string = '';
   editMode: boolean = false;
   resetPassMode: boolean = false;
+  loading: boolean = false;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService , private categoryservice : CategoryService) {
     this.restForm = new FormGroup({
       currentPassword: new FormControl(null),
       newPassword: new FormControl(null),
@@ -71,31 +74,25 @@ export class ProfileComponent {
 
     fileInput.click();
 
-    // Remove the file input element from the DOM after usage
     document.body.removeChild(fileInput);
   }
 
   // Function to update profile image based on user choice
   updateProfileImage(): void {
-    // Check if an image file is selected
     if (this.imageFile) {
-      // If a file is selected, handle the file upload logic...
-      // For now, we'll just log the file details to the console.
+
       console.log('File uploaded:', this.imageFile);
 
-      // You can add additional logic here to handle the file upload
-      // For example, you might want to upload the file to a server
-      // and update the user's profile image URL in userData.
-      // For now, let's update it with a local URL for demonstration purposes.
+
       this.userData.image = URL.createObjectURL(this.imageFile);
 
     }
 
-    // Save updated user data to local storage
+    // Save updated user data
     localStorage.setItem('userData', JSON.stringify(this.userData));
   }
 
-  // Function to update profile information
+  // update profile information
   updateImage(): void {
     this.authService.updateLoggedinUserImage(this.imageFile!)
     .subscribe(res => {
@@ -104,7 +101,7 @@ export class ProfileComponent {
   }
 
   updateProfile(): void {
-    // Additional logic to update other profile information if needed...
+    // update other profile information if needed...
     this.authService.updateLoggedinUser(this.form.getRawValue())
     .subscribe((res: any) => {
       console.log('update user res', res);
@@ -127,5 +124,8 @@ export class ProfileComponent {
     console.log('rest pass res', res);
     this.authService.logout();
   })
+ }
+ setFavourite(id:string , ){
+  // this.categoryservice.star(id , )
  }
 }

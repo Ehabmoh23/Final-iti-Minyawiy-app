@@ -1,6 +1,6 @@
 export interface Restaurents {
   _id: string;
-  restaurentName: string;
+  restName: string;
   email: string;
   address: string;
   phone: string;

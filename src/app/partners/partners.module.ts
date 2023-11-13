@@ -11,6 +11,7 @@ import { EventsComponent } from './events/events.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { FavouriteComponent } from './favourite/favourite.component';
+import { FavListComponent } from './fav-list/fav-list.component';
 
 
 @NgModule({

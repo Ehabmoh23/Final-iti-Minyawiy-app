@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hotels } from '../interfaces/hotels';
@@ -11,8 +11,19 @@ export class CategoryService {
   getCategory(category: string): Observable<any> {
     return this._httpClient.get(`https://itigradiuation.onrender.com/${category}`);
   }
-
-  star(id: string): Observable<any> {
-    return this._httpClient.put(`https://itigradiuation.onrender.com/${id}`, {});
+  get token(): string | null {
+    return localStorage.getItem('token');
   }
+  star(id: string , get_category :string): Observable<any> {
+    const url = `https://itigradiuation.onrender.com/add-${get_category}-id`;
+    let headers = new HttpHeaders();
+    const body = {
+      id: id,
+    };
+    console.log(this.token)
+    headers = headers.append('Authorization', 'Bearer ' + this.token);
+    console.log(headers)
+    console.log(this._httpClient)
+    return this._httpClient.post(url, body , {headers: headers});
+    }
 }

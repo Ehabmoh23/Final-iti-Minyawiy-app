@@ -32,4 +32,9 @@ export class RestaurentsComponent {
     console.debug(event);
     event.target.src = "../../../assets/img.jpg";
  }
+ star(id: string) {
+  this.categoryService.star(id , "restaurant").subscribe((res) => {
+    console.log('star res ', res);
+  });
+}
 }

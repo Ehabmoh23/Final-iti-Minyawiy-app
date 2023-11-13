@@ -20,8 +20,8 @@
         <p class="lead-75">Phone :{{ hotel.phone }}</p>
       </div>
       <div class="dish-info"></div>
-      <a [routerLink]="['/cardDetails','getHotel', hotel._id]" class="btn btn-orange btn-lg">See Details</a>
-      <!-- <button class="btn btn-sm" (click)="star(hotel._id)">Star</button> -->
+      <a [routerLink]="['/cardDetails','getHotel', hotel._id]" class="btn btn-secondary btn-lg">See Details</a>
+      <button class=" ms-2 btn btn-outline-primary btn-lg" (click)="star(hotel._id)">Favourite</button>
     </div>
   </div>
 </div>

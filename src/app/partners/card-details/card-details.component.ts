@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SelectedItemDetailsService } from './../../services/selected-item-details.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-details',
@@ -11,14 +12,17 @@ export class CardDetailsComponent implements OnInit {
   id: string | undefined;
   type: string | undefined;
   apiData: any; // Adjust the type based on your actual API response structure
+  loading: boolean = false;
   constructor(
     private route: ActivatedRoute,
-    private selectedItemDetailsService: SelectedItemDetailsService
+    private selectedItemDetailsService: SelectedItemDetailsService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
     this.type = this.route.snapshot.params['type'];
     this.id = this.route.snapshot.params['id'];
+    this.loading = true;
 
     console.log(this.type);
 
@@ -26,6 +30,7 @@ export class CardDetailsComponent implements OnInit {
       .getSelectedItemDetails(this.id!, this.type!)
       .subscribe(
         (data: any) => {
+          this.loading = false;
           console.log('type:', this.type);
           console.log('API Data:', data);
           if (this.type == 'getHotel') {
@@ -34,6 +39,7 @@ export class CardDetailsComponent implements OnInit {
             this.apiData = data?.car;
           } else if (this.type == 'getEvent') {
             this.apiData = data?.event;
+            console.log(data.event)
           } else if (this.type == 'getresturant') {
             this.apiData = data?.resturant;
           } else if (this.type == 'getvisitplace') {
@@ -41,6 +47,7 @@ export class CardDetailsComponent implements OnInit {
           }
         },
         (error) => {
+          this.loading = false;
           console.error('Error fetching data:', error);
         }
       );
@@ -48,6 +55,11 @@ export class CardDetailsComponent implements OnInit {
 
   errorHandler(event: any) {
     console.debug(event);
-    event.target.src = "../../../assets/img.jpg";
- }
+    event.target.src = '../../../assets/img.jpg';
+  }
+  get sanitizedLocation(): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.apiData?.location || ''
+    );
+  }
 }

@@ -26,4 +26,9 @@ export class CarRentalComponent implements OnInit {
     console.debug(event);
     event.target.src = "../../../assets/img.jpg";
  }
+ star(id: string) {
+  this.categoryService.star(id , "car").subscribe((res) => {
+    console.log('star res ', res);
+  });
+}
 }

@@ -25,5 +25,9 @@ export class EventsComponent {
     console.debug(event);
     event.target.src = "../../../assets/img.jpg";
  }
-
+ star(id: string) {
+  this.categoryService.star(id , "event").subscribe((res) => {
+    console.log('star res ', res);
+  });
+}
 }
