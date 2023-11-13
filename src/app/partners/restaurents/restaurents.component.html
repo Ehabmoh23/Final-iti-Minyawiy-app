@@ -1,71 +1,28 @@
 <section class="menu-list-row mt-5">
-    <div class="container">
-      <div class="row g-4">
-  
-        <!-- Card 1 -->
-        <div class="col-lg-4">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-12 text-center" *ngIf="loading">
+        <i class="fas fa-spinner fa-spin fa-3x"></i>
+        <h1 class="mt-3">Loading....</h1>
+      </div>
+      <div class="col-12 text-center" *ngIf="!loading && restaurents?.length == 0">
+        <img src="../../../assets/nodata.png" class="w-50 rounded-circle" alt="">
+      </div>
+        <div *ngFor="let restauernt of restaurents" class="col-lg-4">
           <div class="blog-box">
-              <img class="blog-img back-img"
-                  src="../../../assets/restauernt/الخليل.jpeg">
-                  <div class="card-body text-center">
-                    <div class="dish-rating mt-3">
-                        5
-                        <i class="fas fa-star"></i>
-                      </div>
-                      
-                    <div class="dish-title mt-3">
-                      <h3 class="h3-title">El-khalil</h3>
-                      <p>Some quick example text to build on the card title and make up the bulk of
-                        the card's content</p>
-                    </div>
-                    <div class="dish-info "></div>
-                    <a href="#" class="btn btn-orange btn-lg ">See More</a>
-                  </div>
+            <img class="blog-img back-img" [src]="restauernt.image" (error)="errorHandler($event)" />
+            <div class="card-body text-center">
+              <div class="dish-title mt-3">
+                <h3 class="h3-title">Name{{ restauernt.restaurentName }}</h3>
+                <p class="lead-75">email :{{ restauernt.email }}</p>
+                <p class="lead-75">Address : {{ restauernt.address }}</p>
+                <p class="lead-75">Phone :{{ restauernt.phone }}</p>
+              </div>
+              <div class="dish-info"></div>
+                 <a [routerLink]="['/cardDetails','getrestauernt', restauernt._id]" class="btn btn-orange btn-lg">See Details</a>
+            </div>
           </div>
-      </div>
-        <!-- Card 2 -->
-        <div class="col-lg-4">
-          <div class="blog-box">
-              <img class="blog-img back-img"
-                  src="../../../assets/restauernt/الصمدى.jpeg">
-                  <div class="card-body text-center">
-                    <div class="dish-rating mt-3">
-                        5
-                        <i class="fas fa-star"></i>
-                      </div>
-                      
-                    <div class="dish-title mt-3">
-                      <h3 class="h3-title">Elsamady </h3>
-                      <p>Some quick example text to build on the card title and make up the bulk of
-                        the card's content</p>
-                    </div>
-                    <div class="dish-info "></div>
-                    <a href="#" class="btn btn-orange btn-lg ">See More</a>
-                  </div>
-          </div>
-      </div>
-        <!-- Card 3 -->
-        <div class="col-lg-4">
-          <div class="blog-box">
-              <img class="blog-img back-img "
-                  src="../../../assets/restauernt/القبطان.jpeg">
-                  <div class="card-body text-center">
-                    <div class="dish-rating mt-3">
-                        5
-                        <i class="fas fa-star"></i>
-                      </div>
-                      
-                    <div class="dish-title mt-3">
-                      <h3 class="h3-title">Elqoptan </h3>
-                      <p>Some quick example text to build on the card title and make up the bulk of
-                        the card's content</p>
-                    </div>
-                    <div class="dish-info"></div>
-                    <a href="#" class="btn btn-orange btn-lg ">See More</a>
-                  </div>
-          </div>
-      </div>
-      </div>
+        </div>
     </div>
-  </section>
-  
+  </div>
+</section>

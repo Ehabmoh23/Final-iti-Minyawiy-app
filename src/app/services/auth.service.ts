@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
@@ -11,6 +11,36 @@ export class AuthService {
   private jwtHelper: JwtHelperService = new JwtHelperService();
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  getLoggedinUserProfile() {
+    const url = 'https://iti-final.vercel.app/user/get';
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', 'Bearer ' + this.token!);
+    return this.http.get(url, {headers: headers});
+  }
+
+  updateLoggedinUserImage(newImage: File) {
+    const url = 'https://iti-final.vercel.app/user/profileImage';
+    let formDate = new FormData();
+    formDate.append('image', newImage);
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', 'Bearer ' + this.token!);
+    return this.http.put(url, formDate, {headers: headers});
+  }
+
+  updateLoggedinUser(newUser: any) {
+    const url = 'https://iti-final.vercel.app/user/update';
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', 'Bearer ' + this.token!);
+    return this.http.put(url, newUser, {headers: headers});
+  }
+
+  resetPassword(body: any) {
+    const url = `https://iti-final.vercel.app/user/resetPassword/${this.userId}`;
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', 'Bearer ' + this.token!);
+    return this.http.put(url, body, {headers: headers});
+  }
 
   login(email: string, password: string) {
     const url = 'https://iti-final.vercel.app/user/login';
@@ -46,6 +76,9 @@ export class AuthService {
   get isLoggedIn(): boolean {
     return localStorage.getItem('token') != null;
   }
+  get userId(): boolean {
+    return JSON.parse(localStorage.getItem('userData')!)?._id;
+  }
 
   get token(): string | null {
     return localStorage.getItem('token');
@@ -70,6 +103,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('email');
     localStorage.removeItem('token');
+    localStorage.removeItem('userData');
     this.router.navigate(['/auth/login']);
   }
 }

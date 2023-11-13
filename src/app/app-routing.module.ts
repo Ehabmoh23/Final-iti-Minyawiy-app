@@ -7,6 +7,7 @@ import { CarRentalComponent } from './partners/car-rental/car-rental.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { ActivitiesComponent } from './partners/activities/activities.component';
 import { EventsComponent } from './partners/events/events.component';
+import { CardDetailsComponent } from './partners/card-details/card-details.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,11 +17,12 @@ const routes: Routes = [
   {path: 'car-rental', component: CarRentalComponent},
   {path: 'actvities', component: ActivitiesComponent},
   {path: 'events', component: EventsComponent},
+  {path: 'cardDetails/:type/:id', component: CardDetailsComponent},
   {path: '**', component: NotfoundComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes , {useHash:true})],
+  imports: [RouterModule.forRoot(routes )],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

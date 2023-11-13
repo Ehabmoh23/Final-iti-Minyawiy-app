@@ -1,21 +1,26 @@
 <section class="menu-list-row mt-5">
   <div class="container">
     <div class="row g-4">
-      <div class="col-12 text-center" *ngIf="cars.length === 0">
+      <div class="col-12 text-center" *ngIf="loading">
         <i class="fas fa-spinner fa-spin fa-3x"></i>
         <h1 class="mt-3">Loading....</h1>
-         </div>
+      </div>
+      <div class="col-12 text-center" *ngIf="!loading && cars?.length == 0">
+        <img src="../../../assets/nodata.png" class="w-50 rounded-circle" alt="">
+      </div>
       <div *ngFor="let car of cars" class="col-lg-4">
         <div class="blog-box">
-          <img class="blog-img back-img" src="../../../assets/img.jpg">
+          <img class="blog-img back-img" [src]="car.image" (error)="errorHandler($event)">
           <div class="card-body text-center">
             <div class="dish-title mt-3">
               <h3 class="h3-title">{{ car.carName }}</h3>
-              <p>{{ car.address }}</p>
-              <p>{{ car.phone }}</p>
+              <p class="lead-75">email :{{ car.email }}</p>
+              <p class="lead-75">Address : {{ car.address }}</p>
+              <p class="lead-75">Phone :{{ car.phone }}</p>
             </div>
             <div class="dish-info"></div>
-            <a href="#" class="btn btn-orange btn-lg">See More</a>
+      <a [routerLink]="['/cardDetails','getCar', car._id]" class="btn btn-orange btn-lg">See Details</a>
+
           </div>
         </div>
       </div>

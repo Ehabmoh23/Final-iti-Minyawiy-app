@@ -11,4 +11,8 @@ export class CategoryService {
   getCategory(category: string): Observable<any> {
     return this._httpClient.get(`https://itigradiuation.onrender.com/${category}`);
   }
+
+  star(id: string): Observable<any> {
+    return this._httpClient.put(`https://itigradiuation.onrender.com/${id}`, {});
+  }
 }

@@ -1,8 +1,38 @@
  <section class="menu-list-row mt-5">
     <div class="container">
       <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-lg-4">
+        <div class="col-12 text-center" *ngIf="loading">
+          <i class="fas fa-spinner fa-spin fa-3x"></i>
+          <h1 class="mt-3">Loading....</h1>
+        </div>
+        <div class="col-12 text-center" *ngIf="!loading && activities?.length == 0">
+          <img src="../../../assets/nodata.png" class="w-50 rounded-circle" alt="">
+        </div>
+  <!-- ... -->
+  <div *ngFor="let activite of activities" class="col-lg-4">
+    <div class="blog-box">
+      <img class="blog-img back-img" [src]="activite.image" (error)="errorHandler($event)">
+      <div class="card-body text-center">
+        <div class="dish-title mt-3">
+          <h3 class="h3-title ">{{ activite.visitName}}</h3>
+          <p class="lead-75">email :{{ activite.email }}</p>
+          <p class="lead-75">Address : {{ activite.address }}</p>
+          <p class="lead-75">Price :{{ activite.price }}</p>
+        </div>
+        <div class="dish-info"></div>
+        <a [routerLink]="['/cardDetails','getvisitplace', activite._id]" class="btn btn-orange btn-lg">See Details</a>
+        <!-- <button class="btn btn-sm" (click)="star(activite._id)">Star</button> -->
+      </div>
+    </div>
+  </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+         <!-- <div class="col-lg-4">
           <div class="blog-box">
               <img class="blog-img back-img"
                   src="../../../assets/activites/دير.jpg">
@@ -11,7 +41,7 @@
                         5
                         <i class="fas fa-star"></i>
                       </div>
-                      
+
                     <div class="dish-title mt-3">
                       <h3 class="h3-title">Saint Mary Coptic</h3>
                       <p>Gabal El-Tair, Samalout, El-Menya, Egypt Al-Maqrizi mentioned in the book Al-Maqriziyyah Plans.</p>
@@ -22,7 +52,6 @@
                   </div>
           </div>
       </div>
-        <!-- Card 2 -->
         <div class="col-lg-4">
           <div class="blog-box">
               <img class="blog-img back-img"
@@ -32,7 +61,7 @@
                         5
                         <i class="fas fa-star"></i>
                       </div>
-                      
+
                     <div class="dish-title mt-3">
                       <h3 class="h3-title">Bahnasa</h3>
                       <p>It is located to the west of Minya Governorate. in which many papyri dating back to the Greek, Roman.</p>
@@ -43,7 +72,6 @@
                     </div>
           </div>
       </div>
-        <!-- Card 3 -->
         <div class="col-lg-4">
           <div class="blog-box">
               <img class="blog-img back-img"
@@ -53,7 +81,7 @@
                         5
                         <i class="fas fa-star"></i>
                       </div>
-                      
+
                     <div class="dish-title mt-3">
                       <h3 class="h3-title">Bani Hassan</h3>
                       <p>Beni Hassan is an archaeological area containing an ancient Egyptian cemetery.</p>
@@ -63,8 +91,4 @@
                     <a href="#" class="btn btn-orange btn-lg mt-2">See More</a>
                   </div>
           </div>
-      </div>
-      </div>
-    </div>
-  </section>
-  
+      </div> -->

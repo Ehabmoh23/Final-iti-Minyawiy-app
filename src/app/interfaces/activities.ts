@@ -1,11 +1,12 @@
 export interface Activities {
   _id: string;
-  hotelName: string;
+  visitName: string;
   email: string;
   address: string;
   phone: string;
   location: string;
   image: string;
+  price: string;
   deleted: boolean;
   createdAt: string;
   updatedAt: string;

@@ -9,13 +9,21 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CarRentalComponent implements OnInit {
   cars: Cars[] = [];
+  loading: boolean = false;
 
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+  this.loading = true;
     this.categoryService.getCategory('getallCar').subscribe((data: any) => {
+  this.loading = false;
       console.log('API Data:', data);
       this.cars = data.allCar || [];
     });
   }
+
+  errorHandler(event: any) {
+    console.debug(event);
+    event.target.src = "../../../assets/img.jpg";
+ }
 }

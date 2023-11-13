@@ -10,6 +10,7 @@ import { AuthModule } from '../auth/auth.module';
 import { EventsComponent } from './events/events.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardDetailsComponent } from './card-details/card-details.component';
+import { FavouriteComponent } from './favourite/favourite.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CardDetailsComponent } from './card-details/card-details.component';
     HomeComponent,
     EventsComponent,
     CardDetailsComponent,
+    FavouriteComponent,
   ],
   imports: [
     CommonModule,

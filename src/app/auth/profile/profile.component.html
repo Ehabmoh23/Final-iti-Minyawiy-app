@@ -1,35 +1,338 @@
-<section style="background-color: #f4f5f7;">
+<section style="background-color: #f4f5f7">
   <div class="container my-5">
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="d-flex flex-column justify-content-center align-items-center">
-          <img src="{{userData?.profileImage ? userData?.profileImage : '../../../assets/profile.jpg'}}"
-          alt="Avatar" class="img-fluid my-4 rounded-circle" style="width: 200px;height: 200px;border-radius: 30px; margin-top: -50px;" />
+    <div class="row">
+      <div class="col-lg-7">
+        <div
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <img
+            [src]="userData?.image"
+            (error)="errorHandler($event)"
+            alt="Avatar"
+            class="img-fluid my-4 rounded-circle"
+            style="
+              width: 200px;
+              height: 200px;
+              border-radius: 30px;
+              margin-top: -50px;
+            "
+          />
           <div class="d-flex justify-content-center align-items-center">
-            <button class="btn btn-secondary me-2" (click)="openFileInput()">Upload Image</button>
-            <button class="btn btn-success" (click)="updateProfile()">Update Profile</button>
+            <button class="btn btn-secondary me-2" (click)="openFileInput()">
+              Upload Image
+            </button>
+            <button class="btn btn-success" (click)="updateImage()">
+              Update Image
+            </button>
           </div>
         </div>
       </div>
-        <div class="col-lg-5">
-          <div class="bg-secondary rounded d-flex justify-content-center align-items-center" style="width: 400px; height: 70px;">
-            <h3 class="h2 text-white" style="text-align: center;">Mohab ashraf ahmed</h3><br>
+      <div class="col-lg-5">
+        <div
+          class="bg-secondary rounded d-flex justify-content-center align-items-center"
+          style="width: 400px; height: 70px"
+          *ngIf="!editMode && !resetPassMode"
+        >
+          <h3 class="h2 text-white" style="text-align: center">
+            {{ userData?.userName }}
+          </h3>
+          <br />
         </div>
-        <ul class="list-unstyled mb-1-9 ms-3s" style="margin-top: 25px;">
-            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Age:</span> 25 Years</li>
-            <li class="mb-2 mb-xl-3 display-28" style="width: 400px;"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span> mohabashraf63@gmail.com </li>
-            <li class="mb-2 mb-xl-3 display-28"  style="width: 400px;"><span class="display-26 text-secondary me-2 font-weight-600">address:</span> Minya,Egypt</li>
-            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span> 01018812803</li>
-            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">gender:</span> male</li>
+        <ul
+          class="list-unstyled mb-1-9 ms-3s"
+          style="margin-top: 25px"
+          *ngIf="!editMode && !resetPassMode"
+        >
+          <li class="mb-2 mb-xl-3 display-28">
+            <span class="display-26 text-secondary me-2 font-weight-600"
+              >Age:</span
+            >
+            {{ userData?.age }} Years
+          </li>
+          <li class="mb-2 mb-xl-3 display-28" style="width: 400px">
+            <span class="display-26 text-secondary me-2 font-weight-600"
+              >Email:</span
+            >
+            {{ userData?.email }}
+          </li>
+          <li class="mb-2 mb-xl-3 display-28" style="width: 400px">
+            <span class="display-26 text-secondary me-2 font-weight-600"
+              >address:</span
+            >
+            {{ userData?.address }}
+          </li>
+          <li class="mb-2 mb-xl-3 display-28">
+            <span class="display-26 text-secondary me-2 font-weight-600"
+              >Phone:</span
+            >
+            {{ userData?.phone }}
+          </li>
+          <li class="mb-2 mb-xl-3 display-28">
+            <span class="display-26 text-secondary me-2 font-weight-600"
+              >Gender:</span
+            >
+            {{ userData?.gender }}
+          </li>
+          <li class="mb-2 mb-xl-3 display-28">
+            <span class="display-26 text-secondary me-2 font-weight-600"
+              >Role:</span
+            >
+            {{ userData?.role }}
+          </li>
+        </ul>
+        <form [formGroup]="form" (submit)="updateProfile()" *ngIf="editMode">
+          <div class="row gy-3 overflow-hidden">
+            <div class="col-12" *ngIf="apiError" class="alert alert-danger">
+              {{ apiError }}
+            </div>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="name"
+                  value=""
+                  placeholder="Name"
+                  formControlName="userName"
+                  required
+                />
+                <label for="name" class="form-label">Name</label>
+                <div
+                  class="mt-1"
+                  *ngIf="
+                    form.get('userName')?.hasError('required') &&
+                    form.get('userName')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  Name is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  placeholder="name@example.com"
+                  formControlName="email"
+                  required
+                  autocomplete="new-email"
+                />
+                <label for="email" class="form-label">Email</label>
+                <div
+                  class="mt-1"
+                  *ngIf="
+                    form.get('email')?.hasError('required') &&
+                    form.get('email')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  Email is required.
+                </div>
+                <div
+                  class="mt-1"
+                  *ngIf="
+                    form.get('email')?.hasError('pattern') &&
+                    form.get('email')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  Email is not valid
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input
+                  type="tel"
+                  class="form-control"
+                  name="phone"
+                  id="phone"
+                  value=""
+                  placeholder="Phone"
+                  formControlName="phone"
+                  required
+                />
+                <label for="phone" class="form-label">Phone</label>
+                <div
+                  class="mt-1"
+                  *ngIf="
+                    form.get('phone')?.hasError('required') &&
+                    form.get('phone')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  phone is required.
+                </div>
+                <div
+                  class="mt-1"
+                  *ngIf="
+                    form.get('phone')?.hasError('pattern') &&
+                    form.get('phone')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  phone is not valid
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="address"
+                  id="address"
+                  value=""
+                  placeholder="address"
+                  formControlName="address"
+                  required
+                />
+                <label for="address" class="form-label">Address</label>
+                <div
+                  class="mt-1"
+                  *ngIf="
+                    form.get('address')?.hasError('required') &&
+                    form.get('address')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  address is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <select
+                  class="form-select"
+                  name="gender"
+                  id="gender"
+                  formControlName="gender"
+                  required
+                >
+                  <option class="mb-2" value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <!-- <input type="text" class="form-control" name="gender" id="gender" value="" placeholder="Gender" formControlName="gender" required> -->
+                <label for="gender" class="form-label">Gender</label>
+                <div
+                  *ngIf="
+                    form.get('gender')?.hasError('required') &&
+                    form.get('gender')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  gender is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input
+                  type="number"
+                  class="form-control"
+                  name="age"
+                  id="age"
+                  value=""
+                  placeholder="Age"
+                  formControlName="age"
+                  required
+                />
+                <label for="age" class="form-label">Age</label>
+                <div
+                  *ngIf="
+                    form.get('age')?.hasError('required') &&
+                    form.get('age')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  Age is required.
+                </div>
+                <div
+                  class="mt-1"
+                  *ngIf="
+                    form.get('age')?.hasError('pattern') &&
+                    form.get('age')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  age is not must be older than 18
+                </div>
+              </div>
+            </div>
 
-        </ul>
-        <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
-            <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
-            <li><a href="#!"><i class="ti-facebook"></i></a></li>
-            <li><a href="#!"><i class="ti-pinterest"></i></a></li>
-            <li><a href="#!"><i class="ti-instagram"></i></a></li>
-        </ul>
+            <div class="col-12">
+              <div class="d-flex justify-content-center align-items-center">
+                <button
+                  class="btn btn-outline-secondary text-uppercase fw-bold w-50"
+                  type="submit"
+                  [disabled]="form.invalid"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form [formGroup]="restForm" *ngIf="resetPassMode" (ngSubmit)="resetPass()">
+          <div class="form-group">
+            <label>Current Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="currentPassword"
+            />
+          </div>
+          <div class="form-group">
+            <label>New Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="newPassword"
+            />
+          </div>
+          <button
+            class="btn btn-outline-secondary text-uppercase fw-bold w-50 mt-2"
+            type="submit"
+            [disabled]="restForm.invalid"
+          >
+          Rest Password
+        </button>
+        </form>
+        <div *ngIf="!editMode && !resetPassMode">
+          <button
+            class="btn btn-outline-secondary"
+            (click)="editMode = true; form.patchValue(userData)"
+          >
+            Edit
+          </button>
+          <button
+          *ngIf="!resetPassMode"
+            class="btn btn-outline-primary ms-2"
+            (click)="resetPassMode = true"
+          >
+            Reset Password
+          </button>
         </div>
+        <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+          <li>
+            <a href="#!"><i class="ti-twitter-alt"></i></a>
+          </li>
+          <li>
+            <a href="#!"><i class="ti-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#!"><i class="ti-pinterest"></i></a>
+          </li>
+          <li>
+            <a href="#!"><i class="ti-instagram"></i></a>
+          </li>
+        </ul>
       </div>
+    </div>
   </div>
 </section>
