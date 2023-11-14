@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Restaurents } from 'src/app/interfaces/restaurents';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class RestaurentsComponent {
   restaurents: Restaurents[] = [];
   loading: boolean = false;
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService, public authService: AuthService) {}
 
   ngOnInit(): void {
     this.loading = true;

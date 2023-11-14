@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Events } from 'src/app/interfaces/events';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class EventsComponent {
   events: Events[] = [];
   loading: boolean = false;
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, public authService: AuthService) { }
 
   ngOnInit(): void {
   this.loading = true;

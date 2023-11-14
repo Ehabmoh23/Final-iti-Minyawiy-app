@@ -21,7 +21,7 @@
               </div>
               <div class="dish-info"></div>
               <a [routerLink]="['/cardDetails','getEvent', event._id]" class="btn btn-secondary btn-lg">See Details</a>
-              <button class=" ms-2 btn btn-outline-primary btn-lg" (click)="star(event._id)">Favourite</button>
+              <button class=" ms-2 btn btn-outline-primary btn-lg" *ngIf="authService.isLoggedIn" (click)="star(event._id)">Favourite</button>
             </div>
           </div>
         </div>

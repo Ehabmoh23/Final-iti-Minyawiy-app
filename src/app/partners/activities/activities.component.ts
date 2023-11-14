@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Activities } from 'src/app/interfaces/activities';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-activities',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class ActivitiesComponent {
   activities: Activities[] = [];
   loading: boolean = false;
-  constructor(private categoryService: CategoryService , private router : Router) { }
+  constructor(private categoryService: CategoryService , private router : Router, public authService: AuthService) { }
  ngOnInit(): void {
   this.loading = true;
   this.categoryService.getCategory('getallvisitplace').subscribe(

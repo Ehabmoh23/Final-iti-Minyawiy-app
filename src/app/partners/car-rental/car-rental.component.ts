@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cars } from 'src/app/interfaces/cars';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class CarRentalComponent implements OnInit {
   cars: Cars[] = [];
   loading: boolean = false;
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, public authService: AuthService) { }
 
   ngOnInit(): void {
   this.loading = true;

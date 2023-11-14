@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Hotels } from 'src/app/interfaces/hotels';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class HotelsComponent {
   hotels: Hotels[] = [];
   loading: boolean = false;
 
-  constructor(private categoryService: CategoryService, private router:Router) {}
+  constructor(private categoryService: CategoryService, private router:Router, public authService: AuthService) {}
 
   ngOnInit(): void {
   this.loading = true;
