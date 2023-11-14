@@ -13,14 +13,21 @@
                 <img
                   [src]="apiData?.image"
                   class="img-fluid w-100 border rounded-3"
-                  style="max-height: 500px;"
+                  style="max-height: 500px"
                   (error)="errorHandler($event)"
                   alt="no image"
                 />
               </div>
             </div>
+            <div class="d-flex justify-content-center align-items-center mt-3">
+              <p-rating
+                [(ngModel)]="rating"
+                (ngModelChange)="onRateChanges($event)"
+              ></p-rating>
+            </div>
           </div>
-          <div class=" details col-md-5" *ngIf="!loading">
+          <div class="details col-md-5" *ngIf="!loading">
+            <div class="d-flex justify-content-between align-items-center">
             <h3 class="product-title fw-bolder">
               {{
                 apiData?.hotelName ||
@@ -30,25 +37,29 @@
                   apiData?.visitName
               }}
             </h3>
+            <div class="dish-rating d-flex flex-column justify-content-center align-items-center">
+             <span class="fs-3 fw-bold mb-1">{{ apiData?.ratings[apiData?.ratings.length-1]}}</span>
+              <i class="fas fa-star" style="color: #ff8243;"></i>
+            </div>
+          </div>
             <p class="product-description">Email : {{ apiData?.email }}</p>
             <p class="product-description">Address : {{ apiData?.address }}</p>
-            <!-- <p *ngIf="apiData?.location" class="product-description">
-              location : {{ apiData?.location }}
-            </p> -->
+
             <p *ngIf="apiData?.phone" class="product-description">
               Phone : {{ apiData?.phone }}
             </p>
             <p *ngIf="apiData?.price" class="product-description">
               Price : {{ apiData?.price }}
             </p>
-            <iframe class="ms-2"
-                width="400"
-                height="250"
-                frameborder="0"
-                style="border: 0"
-                [src]="sanitizedLocation"
-               allowfullscreen
-              ></iframe>
+            <iframe
+              class="ms-2"
+              width="400"
+              height="250"
+              frameborder="0"
+              style="border: 0"
+              [src]="sanitizedLocation"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </div>

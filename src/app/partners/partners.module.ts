@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { FavListComponent } from './fav-list/fav-list.component';
+import { RatingModule } from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { FavListComponent } from './fav-list/fav-list.component';
     RouterLink,
     RouterModule,
     AuthModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RatingModule,
+    FormsModule
   ],
   exports: [
     HomeComponent,

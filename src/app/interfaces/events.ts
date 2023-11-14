@@ -2,6 +2,7 @@ export interface Events {
 
   _id: string;
  eventName: string;
+ ratings:any;
   email: string;
   address: string;
   phone: string;

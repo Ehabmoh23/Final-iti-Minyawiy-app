@@ -1,6 +1,7 @@
 export interface Restaurents {
   _id: string;
   restName: string;
+  ratings:any;
   email: string;
   address: string;
   phone: string;

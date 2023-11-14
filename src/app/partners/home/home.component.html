@@ -1,15 +1,14 @@
 <section class="container-fluid">
   <div class="">
     <header class="container">
-      <div class="row  gx-4 align-items-center justify-content-center">
+      <div class="row gx-4 align-items-center justify-content-center">
         <div class="col-lg-3 col-xl-4 col-xxl-4">
           <div class="text-center text-xl-start">
             <h1 class="fs-6 fw-bolder mb-2">Your Tour Guide for Minia</h1>
             <p class="lead fw-normal-50 fs-2 mb-3 clr-root">Menyawiy.com</p>
             <div
               class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start"
-            >
-            </div>
+            ></div>
           </div>
         </div>
         <div class="col-xl-8 col-xxl-8 d-none d-xl-block text-center mt-4">
@@ -29,29 +28,29 @@
             <h5 class="h5-title text-dark">Trusted by 4+ companies</h5>
           </div>
           <div class="brands-bac">
-          <div class="brands-row ">
-            <div class="brands-box" >
-              <img src="../../../assets/company/افواج.png" alt="" />
-            </div>
-            <div class="brands-box">
-              <img src="../../../assets/company/امواج.jpeg" alt="" />
-            </div>
-           <div class="brands-box">
-              <img src="../../../assets/company/سيزر.jpeg" alt="" />
-            </div>
-            <div class="brands-box">
-              <img src="../../../assets/company/المحبة.png" alt="" />
-            </div>
-            <div class="brands-box">
-              <img src="../../../assets/company/سكاي جولف.png" alt="" />
+            <div class="brands-row">
+              <div class="brands-box">
+                <img src="../../../assets/company/افواج.png" alt="" />
+              </div>
+              <div class="brands-box">
+                <img src="../../../assets/company/امواج.jpeg" alt="" />
+              </div>
+              <div class="brands-box">
+                <img src="../../../assets/company/سيزر.jpeg" alt="" />
+              </div>
+              <div class="brands-box">
+                <img src="../../../assets/company/المحبة.png" alt="" />
+              </div>
+              <div class="brands-box">
+                <img src="../../../assets/company/سكاي جولف.png" alt="" />
+              </div>
             </div>
           </div>
         </div>
-        </div>
       </div>
     </div>
-    <div class="blog-sec section " id="blog">
-      <div class="sec-wp container ">
+    <div class="blog-sec section" id="blog">
+      <div class="sec-wp container">
         <div class="row">
           <div class="col-lg-12">
             <div class="brand-title mb-5">
@@ -59,59 +58,36 @@
             </div>
           </div>
         </div>
-        <div class="row" >
-          <div class="col-lg-4">
-            <div class="blog-box">
-              <img
-                class="blog-img back-img"
-                src="../../../assets/hotels/جراند اتون.jpeg"
-                alt=""
-              />
-              <div class="blog-text">
-                <a href="#" class="h4-title fs-1 mt-1 text-center ">Grand Aton Hotel</a>
-                <div class="ms-2" style="text-align: center;">
-                  <p>
-                    The Grand Aton Hotel is a hotel in a tourist resort overlooking the Nile River. It is distinguished by its geographical location, as it is in a lively area at the end of the Corniche Street.
-                  </p>
-                  <a href="https://maps.app.goo.gl/nQRkCnjVdMfx8EoT8" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a><br>
-                  <a  class="btn btn-orange btn-lg mt-3"> 01000308020</a>                 </div>
-              </div>
-            </div>
+        <div class="row">
+          <div class="col-12 text-center" *ngIf="loading">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+            <h1 class="mt-3 ms-3">Loading....</h1>
           </div>
-          <div class="col-lg-4">
-            <div class="blog-box">
+          <div class="col-12 text-center" *ngIf="!loading && hotels?.length == 0">
+            <img src="../../../assets/nodata.png" class="w-50 rounded-circle" alt="">
+          </div>
+          <div class="col-lg-4" *ngFor="let hotel of hotels">
+            <div class="blog-box d-flex flex-column justify-content-center align-items-center" style="height:550px;">
               <img
                 class="blog-img back-img"
-                src="../../../assets/hotels/سافوي.jpeg"
-                alt=""
+                [src]="hotel.image"
+                (error)="errorHandler($event)"
               />
               <div class="blog-text">
-                <a href="#" class="h4-title fs-1 mt-1 text-center ">Savoy Hotel</a>
-                <div class="ms-2" style="text-align: center;">
-                  <p>
-                    It is a huge hotel and is distinguished by its geographical location because it is in the center of the city and it connects the tribal district to the marine district and next to the train station.
-                  </p>
-                  <a href="https://maps.app.goo.gl/9fHNXQcHPUiom1qo8" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a><br>
-                  <a class="btn btn-orange btn-lg mt-3"> 01116208886</a>
+                <a href="#" class="h4-title fs-1 mt-1 text-center">{{
+                  hotel.hotelName
+                }}</a>
+                <div class="dish-rating d-flex flex-column justify-content-center align-items-center">
+                  <span class="fs-3 fw-bold mb-1">{{ hotel?.ratings[hotel?.ratings.length-1]}}</span>
+                   <i class="fas fa-star" style="color: #ff8243;"></i>
                  </div>
+                <div class="ms-2" style="text-align: center">
+                  <!-- <p class="lead-75">email :{{ hotel.email }}</p> -->
+                  <p class="lead-75">Address : {{ hotel.address }}</p>
+                  <p class="lead-75">Phone :{{ hotel.phone }}</p>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="blog-box">
-              <img
-                class="blog-img back-img"
-                src="../../../assets/hotels/كليوباترا.jpeg"
-                alt=""
-              />
-              <div class="blog-text">
-                <a href="#" class="h4-title fs-1 mt-1 text-center ">Cleopatra Hotel</a>
-                <div class="ms-2" style="text-align: center;">
-                  <p>
-                    Cleopatra Hotel is one of the most prestigious hotels in Minya and is classified locally. It enjoys a beautiful view and overlooks ,Taha Hussein Street</p>
-                  <a href="https://maps.app.goo.gl/zSocfbcjtNjdHGzk7" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a><br>
-                  <a  class="btn btn-orange btn-lg mt-3"> 01223994425</a>                </div>
-              </div>
+              <a [routerLink]="['/cardDetails','getHotel', hotel._id]" class="btn btn-secondary btn-lg">See Details</a>
             </div>
           </div>
         </div>
@@ -120,69 +96,48 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="sec-title text-center mb-5">
-              <div class="mt-2 ">
-                <a
-                routerLink="hotels"
-                  class=""
-                  style="width: 50px;">
-                <i class="fa-solid fa-chevron-down fs-3 mb-2" style="color: gray"></i>
+              <div class="mt-2">
+                <a routerLink="hotels" class="" style="width: 50px">
+                  <i
+                    class="fa-solid fa-chevron-down fs-3 mb-2"
+                    style="color: gray"
+                  ></i>
                 </a>
-                <h5 class="bet-sec-title text-dark ms-1 ">More Hotels</h5>
+                <h5 class="bet-sec-title text-dark ms-1">More Hotels</h5>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-4">
-            <div class="blog-box">
-              <img
-                class="blog-img back-img"
-                src="../../../assets/restauernt/الخليل.jpeg"
-                alt=""
-              />
-              <div class="blog-text">
-                <a href="#" class="h4-title fs-1 mt-1 text-center ">Al-Khalil</a>
-                <div class="ms-2" style="text-align: center;">
-                  <p>
-                    It is a luxurious grilled meat and chicken restaurant located near the Savoy Hotel, approximately 800 meters away from it. It is located next to the Courts Complex.</p>
-                    <a href="https://maps.app.goo.gl/37TxJQX4CbNC7V158" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a><br>
-                  <a  class="btn btn-orange btn-lg mt-3"> 01019959956</a>                </div>
-              </div>
-            </div>
+          <div class="col-12 text-center" *ngIf="loading">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+            <h1 class="mt-3 ms-3">Loading....</h1>
           </div>
-          <div class="col-lg-4">
-            <div class="blog-box">
-              <img
-                class="blog-img back-img"
-                src="../../../assets/restauernt/الصمدى.jpeg"
-                alt=""
-              />
-              <div class="blog-text">
-                <a href="#" class="h4-title fs-1 mt-1 text-center ">Al-Samady</a>
-                <div class="ms-2" style="text-align: center;">
-                  <p>
-                    It is a brand store dedicated to sweets and has its own factory that contains many sections, such as Western breakfast, croissants, etc., the cake and gateau section , the oriental section.</p>
-                  <a href="https://maps.app.goo.gl/bHBNbH9vtJ7bVExe6" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a><br>
-                  <a class="btn btn-orange btn-lg mt-3"> 01094900804</a>                </div>
-              </div>
-            </div>
+          <div class="col-12 text-center" *ngIf="!loading && restaurents?.length == 0">
+            <img src="../../../assets/nodata.png" class="w-50 rounded-circle" alt="">
           </div>
-          <div class="col-lg-4">
-            <div class="blog-box">
+          <div class="col-lg-4" *ngFor="let restaurent of restaurents">
+            <div class="blog-box d-flex flex-column justify-content-center align-items-center" style="height:550px;">
               <img
                 class="blog-img back-img"
-                src="../../../assets/restauernt/القبطان.jpeg"
-                alt=""
+                [src]="restaurent.image"
+                (error)="errorHandler($event)"
               />
               <div class="blog-text">
-                <a href="#" class="h4-title fs-1 mt-1 text-center ">Al-qoptan</a>
-                <div class="ms-2" style="text-align: center;">
-                  <p>
-                    It is a seafood restaurant that has all kinds of river and sea fish and poultry, and it is always distinguished by its quality and taste because there is a secret mixture in seasoning each type.
-                  </p>
-                  <a href="https://maps.app.goo.gl/wKRb56nJkRpEgUCt6" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a><br>
-                  <a  class="btn btn-orange btn-lg mt-3"> 01021034616</a>                </div>
+                <a href="#" class="h4-title fs-1 mt-1 text-center">{{
+                  restaurent.restName
+                }}</a>
+                <div class="dish-rating d-flex flex-column justify-content-center align-items-center">
+                  <span class="fs-3 fw-bold mb-1">{{ restaurent?.ratings[restaurent?.ratings.length-1]}}</span>
+                   <i class="fas fa-star" style="color: #ff8243;"></i>
+                 </div>
+                <div class="ms-2" style="text-align: center">
+                  <!-- <p class="lead-75">email :{{ restaurent.email }}</p> -->
+                  <p class="lead-75">Address : {{ restaurent.address }}</p>
+                  <p class="lead-75">Phone :{{ restaurent.phone }}</p>
+                </div>
               </div>
+              <a [routerLink]="['/cardDetails','getresturant', restaurent._id]" class="btn btn-secondary btn-lg">See Details</a>
             </div>
           </div>
         </div>
@@ -191,83 +146,162 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="sec-title text-center mb-5">
-              <div class="mt-2 ">
-                <a
-                routerLink="restaurents"
-                  class=""
-                  style="width: 50px;">
-                <i class="fa-solid fa-chevron-down fs-3 mb-2" style="color: gray"></i>
+              <div class="mt-2">
+                <a routerLink="restaurents" class="" style="width: 50px">
+                  <i
+                    class="fa-solid fa-chevron-down fs-3 mb-2"
+                    style="color: gray"
+                  ></i>
                 </a>
-                <h5 class="bet-sec-title text-dark ms-1 ">More Restaurents</h5>
+                <h5 class="bet-sec-title text-dark ms-1">More Restaurents</h5>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-4">
-            <div class="blog-box">
+          <div class="col-12 text-center" *ngIf="loading">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+            <h1 class="mt-3 ms-3">Loading....</h1>
+          </div>
+          <div class="col-12 text-center" *ngIf="!loading && cars?.length == 0">
+            <img src="../../../assets/nodata.png" class="w-50 rounded-circle" alt="">
+          </div>
+          <div class="col-lg-4" *ngFor="let car of cars">
+            <div class="blog-box d-flex flex-column justify-content-center align-items-center" style="height:550px;">
               <img
                 class="blog-img back-img"
-                src="../../../assets/CarRenter/M.jpg"
-                alt=""
+                [src]="car.image"
+                (error)="errorHandler($event)"
               />
               <div class="blog-text">
-                <a href="#" class="h4-title fs-1 mt-1 text-center ">El-Minya Automative</a>
-                <div class="ms-2" style="text-align: center;">
-                  <p>
-                    Your safety is with us. Because all our cars are safe, rent your car safely with the most convenient payment methods
-                  </p>
-                  <a href="https://maps.app.goo.gl/U4JbnFgetJ73MBt19" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a><br>
-                  <a  class="btn btn-orange btn-lg mt-3"> 01223444112</a>                </div>
+                <a href="#" class="h4-title fs-1 mt-1 text-center">{{
+                  car.carName
+                }}</a>
+                <div class="dish-rating d-flex flex-column justify-content-center align-items-center">
+                  <span class="fs-3 fw-bold mb-1">{{ car?.ratings[car?.ratings.length-1]}}</span>
+                   <i class="fas fa-star" style="color: #ff8243;"></i>
+                 </div>
+                <div class="ms-2" style="text-align: center">
+                  <!-- <p class="lead-75">email :{{ car.email }}</p> -->
+                  <p class="lead-75">Address : {{ car.address }}</p>
+                  <p class="lead-75">Phone :{{ car.phone }}</p>
+                </div>
               </div>
+              <a [routerLink]="['/cardDetails','getresturant', car._id]" class="btn btn-secondary btn-lg">See Details</a>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="blog-box">
-              <img
-                class="blog-img back-img"
-                src="../../../assets/CarRenter/alhamd.jpg"
-                alt=""
-              />
-              <div class="blog-text">
-                <a href="#" class="h4-title fs-1 mt-1 text-center ">Ahmed car</a>
-                <div class="ms-2" style="text-align: center;">
-                  <p>
-                    Our clients are our capital. When dealing with us, you do not feel as if you are a tenant, but rather you are always an owner.                  </p>
-                  <a href="https://maps.app.goo.gl/u19tUBjyiRYsvBzB6" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a><br>
-                  <a class="btn btn-orange btn-lg mt-3">01095067593</a>                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="blog-box">
-              <img
-                class="blog-img back-img"
-                src="../../../assets/CarRenter/Minia motors.jpg"
-                alt=""
-              />
-              <div class="blog-text">
-                <a href="#" class="h4-title fs-1 mt-1 text-center ">Minya Motors</a>
-                <div class="ms-2" style="text-align: center;">
-                  <p>
-                    If you want happiness and enjoyment in moving, you should book with us at the cheapest prices and comfortable cars .
-                  </p>
-                  <a href="https://maps.app.goo.gl/FMaiZdDbswrKuo957" target="_blank"><i class="fa-solid fa-location-dot fs-4 clr-root"></i></a><br>
-                  <a class="btn btn-orange btn-lg mt-3">01000042325</a>                </div>
-              </div>
-            </div>
-          </div>
-
+        </div>
+      </div>
+      <div class="sec-wp container">
+        <div class="row">
           <div class="col-lg-12">
-            <div class="sec-title text-center">
-              <div class="mt-2 ">
-                <a
-                routerLink="car-rental"
-                  class=""
-                  style="width: 50px;">
-                <i class="fa-solid fa-chevron-down fs-3 mb-2" style="color: gray"></i>
+            <div class="sec-title text-center mb-5">
+              <div class="mt-2">
+                <a routerLink="car-rental" class="" style="width: 50px">
+                  <i
+                    class="fa-solid fa-chevron-down fs-3 mb-2"
+                    style="color: gray"
+                  ></i>
                 </a>
-                <h5 class="bet-sec-title text-dark ms-1 ">More Cars</h5>
+                <h5 class="bet-sec-title text-dark ms-1">More Cars</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center" *ngIf="loading">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+            <h1 class="mt-3 ms-3">Loading....</h1>
+          </div>
+          <div class="col-12 text-center" *ngIf="!loading && activties?.length == 0">
+            <img src="../../../assets/nodata.png" class="w-50 rounded-circle" alt="">
+          </div>
+          <div class="col-lg-4" *ngFor="let activity of activties">
+            <div class="blog-box d-flex flex-column justify-content-center align-items-center" style="height:550px;">
+              <img
+                class="blog-img back-img"
+                [src]="activity.image"
+                (error)="errorHandler($event)"
+              />
+              <div class="blog-text">
+                <a href="#" class="h4-title fs-1 mt-1 text-center">{{
+                  activity.visitName
+                }}</a>
+                <div class="dish-rating d-flex flex-column justify-content-center align-items-center">
+                  <span class="fs-3 fw-bold mb-1">{{ activity?.ratings[activity?.ratings.length-1]}}</span>
+                   <i class="fas fa-star" style="color: #ff8243;"></i>
+                 </div>
+                <div class="ms-2" style="text-align: center">
+                  <!-- <p class="lead-75">email :{{ car.email }}</p> -->
+                  <p class="lead-75">Address : {{ activity.address }}</p>
+                  <p class="lead-75">Phone :{{ activity.phone }}</p>
+                </div>
+              </div>
+              <a [routerLink]="['/cardDetails','getresturant', activity._id]" class="btn btn-secondary btn-lg">See Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="sec-title text-center mb-5">
+              <div class="mt-2">
+                <a routerLink="actvities" class="" style="width: 50px">
+                  <i
+                    class="fa-solid fa-chevron-down fs-3 mb-2"
+                    style="color: gray"
+                  ></i>
+                </a>
+                <h5 class="bet-sec-title text-dark ms-1">More Activities</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sec-wp container">
+        <div class="row">
+          <div class="col-12 text-center" *ngIf="loading">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+            <h1 class="mt-3 ms-3">Loading....</h1>
+          </div>
+          <div class="col-12 text-center" *ngIf="!loading && events?.length == 0">
+            <img src="../../../assets/nodata.png" class="w-50 rounded-circle" alt="">
+          </div>
+          <div class="col-lg-4" *ngFor="let event of events">
+            <div class="blog-box d-flex flex-column justify-content-center align-items-center" style="height:550px;">
+              <img
+                class="blog-img back-img"
+                [src]="event.image"
+                (error)="errorHandler($event)"
+              />
+              <div class="blog-text">
+                <a href="#" class="h4-title fs-1 mt-1 text-center">{{
+                  event.eventName
+                }}</a>
+                <div class="dish-rating d-flex flex-column justify-content-center align-items-center">
+                  <span class="fs-3 fw-bold mb-1">{{ event?.ratings[event?.ratings.length-1]}}</span>
+                   <i class="fas fa-star" style="color: #ff8243;"></i>
+                 </div>
+                <div class="ms-2" style="text-align: center">
+                  <!-- <p class="lead-75">email :{{ car.email }}</p> -->
+                  <p class="lead-75">Address : {{ event.address }}</p>
+                  <p class="lead-75">Phone :{{ event.phone }}</p>
+                </div>
+              </div>
+              <a [routerLink]="['/cardDetails','getresturant', event._id]" class="btn btn-secondary btn-lg">See Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="sec-title text-center mb-5">
+              <div class="mt-2">
+                <a routerLink="events" class="" style="width: 50px">
+                  <i
+                    class="fa-solid fa-chevron-down fs-3 mb-2"
+                    style="color: gray"
+                  ></i>
+                </a>
+                <h5 class="bet-sec-title text-dark ms-1">More Events</h5>
               </div>
             </div>
           </div>

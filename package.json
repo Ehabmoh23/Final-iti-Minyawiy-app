@@ -26,7 +26,7 @@
     "httpclient": "^0.1.0",
     "ng-http-interceptor": "^4.0.0",
     "ngx-wow": "^2.0.1",
-    "primeng": "^16.7.0",
+    "primeng": "^16.7.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "wowjs": "^1.1.3",

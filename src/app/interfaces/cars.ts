@@ -1,6 +1,7 @@
 export interface Cars {
   _id: string;
   carName: string;
+  ratings:any;
   email: string;
   address: string;
   phone: string;

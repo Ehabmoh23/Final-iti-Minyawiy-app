@@ -17,7 +17,7 @@ export class FavListComponent implements OnChanges {
  }
 
  ngOnChanges(): void {
-  this.data.forEach(item => {
+  this.data?.forEach(item => {
     if(this.filtered.findIndex(x => x._id == item._id) == -1) {
       this.filtered.push(item);
     }
